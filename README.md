@@ -65,7 +65,7 @@ cascade:
 
 in frontmatter ensures that only the scaled images end up in the ebook folder and the original files are not copied along with them -- which HUGO would otherwise do by default.
 
-**table of contents.md** and **title page.md** create these necessary pages in the ebook. These files must not be deleted or renamed. The content comes from params in _config.toml_. In the frontmatter the parameter
+**inhaltsverzeichnis.md** and **titelseite.md** create these necessary pages in the ebook. These files must not be deleted or renamed. The content comes from params in _config.toml_. In the frontmatter the parameter
 `ebook: toc`
 resp.
 `ebook: cover`
