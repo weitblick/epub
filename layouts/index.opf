@@ -1,0 +1,73 @@
+{{- printf "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>" | safeHTML }}
+<package xmlns="http://www.idpf.org/2007/opf" 
+         xmlns:opf="http://www.idpf.org/2007/opf"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         version="3.0"
+         xml:lang="{{ .Lang }}"
+         unique-identifier="id"
+         prefix="rendition: http://www.idpf.org/vocab/rendition/#">
+
+ <metadata>
+  <dc:identifier id="id">{{ .Site.Params.bookid | default now.Unix }}</dc:identifier>      
+  <dc:language>{{ .Lang }}</dc:language>
+  <dc:title>{{ .Site.Params.title }}</dc:title>
+  <dc:description>{{ .Site.Params.description }}</dc:description>
+  <dc:creator id="c1">{{ .Site.Params.creator }}</dc:creator>
+  <meta refines="#c1" property="file-as">{{ .Site.Params.creator }}</meta>
+  <meta refines="#c1" property="role" scheme="marc:relators">aut</meta>
+  <meta property="dcterms:modified">{{ now.Format "2006-01-02T15:04:05Z" }}</meta> 
+  <meta property="dcterms:created">{{ now.Format "2006-01-02T15:04:05 MST" }}</meta>
+  <dc:publisher>{{ .Site.Params.publisher }}</dc:publisher>
+  <dc:format>application/epub+zip</dc:format>
+  <meta property="dcterms:type">Text</meta>
+  {{ range .Site.Params.subject -}}
+  <dc:subject>{{ . }}</dc:subject>
+  {{ end -}}
+  <meta property="dcterms:audience">{{ .Site.Params.audience }}</meta> 
+  <meta property="rendition:flow">scrolled-doc</meta>
+ </metadata>
+
+
+ <manifest>
+ 
+   <item href="toc.ncx" id="ncx" media-type="application/x-dtbncx+xml" />
+   <item href="titelseite.xhtml" id="titelseite" media-type="application/xhtml+xml" />
+   <item href="inhaltsverzeichnis.xhtml" id="inhaltsverzeichnis" properties="nav" media-type="application/xhtml+xml" />
+   <item href="cover.jpg" id="cover-image" media-type="image/jpeg" properties="cover-image" />
+   <item href="css/stylesheet.css" id="css" media-type="text/css" /> 
+{{ $i := 0 -}}
+{{- $n := 0 }}
+{{- $size := .Site.Params.imgsize -}}
+{{- $beginning := "" -}}
+{{- range ( where .Site.RegularPages "Section" "ne" "" ).Reverse }}
+   <item href="{{ replace .Permalink "/OEBPS/" "" }}" id="chapter_{{ $i }}" media-type="application/xhtml+xml" />
+	{{- if eq $i 0 }}{{ $beginning = .Permalink }}{{ end -}}
+	{{- with  .Resources.ByType "image" -}}
+		{{- range . }}		
+			{{- $scaled := .Resize $size }}
+   <item href="{{ replace $scaled.RelPermalink "/OEBPS/" "" }}" id="img_{{ $n }}" media-type="image/{{ if in $scaled.RelPermalink ".png"}}png{{ else }}jpeg{{ end }}" />
+{{- $n = add $n 1 -}}
+		{{- end -}}
+	{{- end -}}
+{{ $i = add $i 1 }}
+{{- end }}
+
+ </manifest>
+
+
+ <spine toc="ncx">
+   <itemref idref="titelseite" />
+   <itemref idref="inhaltsverzeichnis" />
+{{ $i = 0 }}
+{{- range ( where .Site.RegularPages "Section" "ne" "" ).Reverse }}
+  <itemref idref="chapter_{{ $i }}" />   
+{{- $i = add $i 1 }}
+{{- end }}
+ </spine>
+ 
+ 
+ <guide>
+   <reference type="text" title="Beginning" href="{{ replace $beginning "/OEBPS/" "" }}" />
+   <reference type="toc"  title="Inhalt" href="inhaltsverzeichnis.xhtml" />
+ </guide>
+</package>

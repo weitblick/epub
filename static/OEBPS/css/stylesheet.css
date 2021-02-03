@@ -1,0 +1,98 @@
+html {
+  padding:1em; 
+  margin:1em; 
+  font-family: sans-serif
+} 
+
+/* Überschriften, Größe und Außenabstand, zentrieren */ 
+h1 {font-size: 2.0em; padding: 0; margin:1em; text-align: center}
+h2 {font-size: 1.5em; padding: 0; margin:1em; text-align: center}
+h3 {font-size: 1.2em; padding: 0; margin:1em; text-align: center}
+h4, .introtext {font-size: 1.2em; padding: 0; margin:1em; text-align: center}
+h5 {font-size: 1.0em; padding: 0; margin:1em; text-align: center}
+h6 {font-size: 1.0em; padding: 0; margin:1em; text-align: center}
+
+/* Abkürzungen und Erläuterungen kenntlich machen */
+abbr[title], acronym[title], span[title]
+{
+ border-bottom: thin dotted
+}
+/* Abkürzungen und Erläuterungen sichtbar machen
+abbr[title]:after, acronym[title]:after, span[title]:after {
+content: ' [' attr(title) ']'
+} */
+/* Quellenangaben sichtbar machen
+blockquote[cite]:after, q[cite]:after {
+content: '[Quelle:' attr(cite) ']'
+}
+ */
+
+/* Schriftfamilie für Abkürzungen und ein paar andere Elemente */
+abbr, acronym, kbd, var
+{
+ font-family: serif
+}
+/* fette Schrift für diese Elemente */
+code, kbd, var, h6
+{
+ font-weight: bold
+}
+/* Absatz nicht einrücken, 
+ sondern nach oben und unten Platz lassen */
+p {
+text-indent: 0; 
+display: block;
+margin-top: 1em;
+margin-bottom: 1em
+}
+
+/* section etc sichtbar machen */
+section, article, aside, nav
+{
+display: block; margin: 1ex; padding: 1em  
+}
+header, footer
+{
+display: block; border: thin solid; padding: 1em  
+}
+main
+{
+display: block  
+}
+
+section {border-top: thin dotted; border-bottom: thin dotted}
+aside {border-left: thin dotted; font-size: 0.9em;}
+blockquote { margin-left:0; border-left: thin dotted; margin-top: 1.5em; }
+blockquote p { padding-left: 1em; font-style: italic; font-size: 1.2em;}
+
+aside h2 {font-size: 1.5em; text-align: left; margin-left:0; }
+aside h3 {font-size: 1.2em; text-align: left; margin-left:0; }
+
+/* weil man bei EPUB ol verwenden muß, die Zahlen aber nicht braucht */
+nav ol {list-style-type: circle}
+
+dt {font-size: 1.2em; font-variant: small-caps; margin-top:0.5ex}
+dd {padding-left: 2ex}
+
+/* Figuren und Graphiken, Behälter für eingebettete Strukturen*/
+figure, figcaption {display: block}
+figure { margin-top: 2em; text-align: center;}
+figcaption { font-family: serif; text-align: center; font-style: italic; font-size: 0.9em; }
+
+/* Wenn der Darstellungsbereich breiter als hoch ist,
+ kann es bei einigen Bildern hilfreich sein, diese neben dem Text anzuordnen*/
+@media (orientation:landscape)  {
+figure.l {display: block; width: 50%; max-width: 30em; float: left}  
+figure.r {display: block; width: 50%; max-width: 30em; float: right}    
+}
+
+/* Gedicht Strophen */
+section.st { border: none}
+/* Gedicht Strophen - darin stehen nur Zeilen...  */
+section.st div:first-letter {font-weight: bolder}
+
+table {border: thin solid; border-spacing:0}
+caption{font-family: serif; font-style: italic; text-align: center; caption-side: bottom }
+tr, td, th {border: thin solid}
+td, th {vertical-align: top; text-align:left; padding: 1ex }
+

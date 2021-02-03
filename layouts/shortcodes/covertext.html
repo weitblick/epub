@@ -1,0 +1,6 @@
+<h3>{{ .Site.Params.author }}</h3>
+<h1>{{ .Site.Params.title }}</h1>
+{{ with .Site.Params.subtitle }}<h2>{{ . }}</h2>{{ end }}
+{{ with .Site.Params.description }}<p><strong>{{ . }}</strong></p>{{ end }}
+<p>Copyright: {{ .Site.Params.publisher }}</p>
+<p>Automatisch erzeugt am: {{ now.Format "02.01.2006" }}</p>

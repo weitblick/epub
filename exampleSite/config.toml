@@ -1,0 +1,80 @@
+baseURL = ""
+DefaultContentLanguage = "de"
+languageCode = "de-de"
+title = "Ebook-Generator"
+theme = "epub"
+author = "Erhard Maria Klein"
+copyright = "Copyright © 2020 Erhard Maria Klein, https://weitblick.org"
+
+disableKinds = ["RSS", "robotsTXT", "404", "taxonomy", "section", "term", "sitemap"]
+
+uglyurls = true
+relativeURLs = true
+disablePathToLower = true
+
+[permalinks]
+# add your section name(s) here. Default is "blog"
+  blog = "/OEBPS/chapter/:filename"
+  "/" = "/OEBPS/:filename"
+  
+[mediaTypes]
+  [mediaTypes."application/xhtml+xml"]
+    suffixes = ["xhtml"]
+  [mediaTypes."application/opf+xml"]
+    suffixes = ["opf"]
+  [mediaTypes."application/x-dtbncx+xml"]
+    suffixes = ["ncx"]
+    
+[outputFormats]
+  [outputFormats.XHTML]
+    mediaType = "application/xhtml+xml"
+    isHTML = true
+    permalinkable = true
+  [outputFormats.OPF]
+    mediaType = "application/opf+xml"
+    isHTML = true
+    permalinkable = true
+    path = "OEBPS"
+    baseName = "content"
+  [outputFormats.NCX]
+    mediaType = "application/x-dtbncx+xml"
+    isHTML = true
+    permalinkable = true
+    path = "OEBPS"
+    baseName = "toc"
+    
+[outputs]
+  page = ["XHTML"]
+  home = ["OPF","NCX"]
+  
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.extensions]
+      definitionList = true
+      footnote = true
+      linkify = true
+      strikethrough = true
+      table = true
+      taskList = true
+      typographer = false
+    [markup.goldmark.parser]
+      attribute = true
+      autoHeadingID = false
+    [markup.goldmark.renderer]
+      hardWraps = false
+      unsafe = true
+      xHTML = true
+      
+[params]
+  imgsize = "1200x q70" 
+# imgsize = "800x png" # png works better with older ebook reader
+  bookid = "" # if empty the unix timestamp is taken
+# metadata of your ebook
+  title = "HUGO Epub Theme"
+  subtitle = "from weitblick.org" # (optional)
+  description = "A simple HUGO theme for creating epub ebooks" # (optional)
+  creator = "Klein, Erhard Maria" # format: lastname, firstname
+  author = "Erhard Maria Klein" # format: firstname lastname
+  publisher = "Weitblick Internetwerkstatt"
+  audience = "teenagers, adults"
+  subject = ['HUGO', 'Epub', 'Ebook'] # (optional)

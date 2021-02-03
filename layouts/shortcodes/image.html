@@ -1,0 +1,12 @@
+{{ $src := .Get "src" }}{{ $src = print "*" $src "*" -}}
+{{- $size := .Site.Params.imgsize -}}
+{{- $caption := .Get "caption" -}}
+	{{- with  $.Page.Resources.Match $src -}}
+		{{- range first 1 . -}}
+		{{- $scaled := .Resize $size -}}
+<figure>
+<img src="{{ $scaled.RelPermalink }}" alt="{{ $caption | default $.Page.Title }}" />
+<figcaption>{{ $caption }}</figcaption>
+</figure>
+        	{{- end -}}
+	{{- end -}}

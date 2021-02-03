@@ -1,0 +1,12 @@
+name = "epub"
+license = "CC-BY"
+licenselink = "https://weitblick.org"
+description = "Epub Theme"
+homepage = "https://weitblick.org"
+tags = []
+features = []
+min_version = "0.76.0"
+
+[author]
+    name ="Erhard Maria Klein"
+    homepage = "https://weitblick.org"
