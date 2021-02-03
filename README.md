@@ -93,6 +93,9 @@ Also, all files used in the ebook must be registered in the _manifest_ of _conte
 
 ## How to generate the epub file
 
+See _exampleSite_. To create your own ebook, you only need to change the metadata in _config.toml_ and replace the _Page-Resources_ in the _content/blog/_ folder with your own content in markdown format.
+In addition, the file _static/OEBPS/cover.jpg_ should be exchanged to your own cover (ideally in portrait format). Do not change file name and format of the cover image.
+
 Calling `hugo` in the HUGO root directory of the project creates the demo ebook in the _public_ folder -- but still unpacked. To get the desired epub format, the contents of the _public_ directory must be zipped. The zip archive must have the extension .epub.  
 Important: the _mimetype_ file must be the first file in the zip archive. So the call of zip should be like this to create an ebook named _ebook.epub_ which is located in the HUGO root directory:
 
