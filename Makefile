@@ -10,4 +10,4 @@ quickstart:
 	rm -rf exampleSite   # remove the example site in the theme
 	cd ../..
 	hugo
-  	bash ./deploy.sh
+	bash ./deploy.sh
