@@ -133,6 +133,18 @@ By the way, for manual **internal links** between articles, the automatic relati
 
 There are also two shortcodes that generate the cover page and can be customized if needed: _cover.html_ and _covertext.html_.
 
+## Get the theme
+
+Create an new Hugo site:
+```sh
+$ hugo new site yoursite
+```
+
+Run from the root of your Hugo site:
+```sh
+$ git clone https://github.com/weitblick/epub.git themes/epub
+```
+
 ## Demo ebook
 
 [ebook.epub](https://weitblick.org/ebook.epub)
