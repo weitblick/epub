@@ -37,6 +37,10 @@ code, kbd, var, h6
 {
  font-weight: bold
 }
+code
+{
+ background-color: lightgray;
+}
 /* Absatz nicht einrücken, 
  sondern nach oben und unten Platz lassen */
 p {
