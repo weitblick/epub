@@ -1,6 +1,9 @@
+#
+# we assume you already cloned epub
+#
 quickstart:
-	git clone https://github.com/weitblick/epub.git
-	cd epub
+	# git clone https://github.com/weitblick/epub.git
+	# cd epub
 	cd exampleSite
 	mkdir themes
 	cd themes
