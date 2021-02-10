@@ -19,7 +19,6 @@ quickstart:
 	echo
 
 
-
 clean:
-	rm -rf exexampleSite/themes
-	rm -rf exexampleSite/*.epub
+	rm -rf exampleSite/themes
+	rm -rf exampleSite/*.epub
